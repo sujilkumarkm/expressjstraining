@@ -17,7 +17,12 @@ let posts = [
 
 // get all posts
 app.get('/api/posts', (req, res) => {
-    res.json(posts);
+    const limit = parseInt(req.query.limit) || posts.length;
+    if(!isNaN(limit) && limit > 0){ {
+    res.json(posts.slice(0, limit));
+    } } else {
+        res.status(400).json({ error: 'Invalid limit parameter' });
+    }
 });
 
 //get single post
