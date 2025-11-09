@@ -2,17 +2,26 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+
+const port = process.env.PORT || 8000; 
 //setup static folder to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 //routes    
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+let posts = [
+    { id: 1, title: 'Post One', body: 'This is post one' },
+    { id: 2, title: 'Post Two', body: 'This is post two' },
+    { id: 3, title: 'Post Three', body: 'This is post three' },
+];
+
+app.get('/api/posts', (req, res) => {
+    // const posts = [
+    //     { id: 1, title: 'Post One', body: 'This is post one' },
+    //     { id: 2, title: 'Post Two', body: 'This is post two' },
+    //     { id: 3, title: 'Post Three', body: 'This is post three' },
+    // ];
+    res.json(posts);
 });
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'about.html'));
-});
-
-app.listen(8000, () => console.log('Server is running on port 8000'));
+app.listen(port, () => console.log(`Server is running on port ${port}`));
