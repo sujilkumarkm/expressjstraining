@@ -10,18 +10,20 @@ const port = process.env.PORT || 8000;
 //routes    
 
 let posts = [
-    { id: 1, title: 'Post One', body: 'This is post one' },
-    { id: 2, title: 'Post Two', body: 'This is post two' },
-    { id: 3, title: 'Post Three', body: 'This is post three' },
+    { id: 1, title: 'Best Post One'},
+    { id: 2, title: 'Silver Post Two'},
+    { id: 3, title: 'Post Three'},
 ];
 
+// get all posts
 app.get('/api/posts', (req, res) => {
-    // const posts = [
-    //     { id: 1, title: 'Post One', body: 'This is post one' },
-    //     { id: 2, title: 'Post Two', body: 'This is post two' },
-    //     { id: 3, title: 'Post Three', body: 'This is post three' },
-    // ];
     res.json(posts);
 });
+
+//get single post
+app.get('/api/posts/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    res.json(posts.filter(post => post.id === id));
+}); 
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
