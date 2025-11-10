@@ -6,9 +6,16 @@
     <title>WELCOME TO UGANDA WEBSITE</title>
 </head>
 <body>
-    <h1>POSTS</h1>
-    <button id="get-posts-btn">Get Posts</button>
-    <div id="output"></div>
+     <br> <br> <br>
+    <form align="center" id="add-post-form" action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="title" name="title" required> <br><br><br>
+        <button type="submit">Add This Post</button> <br> <br> <br>
+
+    </form>
+    <h1  align="center" >POSTS</h1> <br> <br>
+    <button align="center" id="get-posts-btn">Get Posts</button>
+    <div  align="center"  id="output"></div> <br> <br> <br> 
     <script src="./js/main.js"></script>
 </body>
 </html>
