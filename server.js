@@ -20,8 +20,6 @@ app.use(logger);
 //routes
 app.use('/api/posts', posts);
 
-
-
 // Error handler
 app.use(notfound);
 app.use(errorHandler);
